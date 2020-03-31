@@ -1,0 +1,19 @@
+{
+  "name": "fleurprints",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boomKABOOM/fleurprints.git"
+  },
+  "author": "bmKBM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boomKABOOM/fleurprints/issues"
+  },
+  "homepage": "https://github.com/boomKABOOM/fleurprints#readme"
+}

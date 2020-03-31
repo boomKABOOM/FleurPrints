@@ -1,0 +1,12 @@
+{
+  "concurrency": 20,
+  "targets": [
+    {
+      "name": "Fleur Prints - PRODUCTION",
+      "url": "https://a57f0ad2118f11a73032b18d07c9c9d0:1f669e908740795916fb1993ebb2d465@fleur-prints.myshopify.com/admin/api",
+      "theme_name": "Impulse",
+      "theme_id": 93639803019
+    }
+  ],
+  "configVersion": 2
+}

@@ -1,0 +1,64 @@
+$size-xl:1600px;
+$size-l:1100px;
+$size-m:992px;
+$size-s:768px;
+$size-xs:576px;
+
+$black-si:#231f20;
+
+$green:#6FCD5C;
+
+$red-si:#fd3434;
+$red-lt:#FA4C4C;
+$red-md:#E83333;
+
+$offwhite-md: #F5F5F5;
+$offwhite-dk: #F2F2F2;
+
+$gray-lt: #EBEBEB;
+$gray-md: #808080;
+$gray-dk: #383838;
+
+$font1: 'Source Sans Pro', sans-serif;
+
+@mixin text-reg{
+  font-family: $font1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  color:$black-si;
+}
+
+@mixin text-titles{
+  font-family: $font1;
+  font-weight: 700;
+  font-size: 18px;
+  color:$gray-md;
+}
+
+@mixin text-subtitles{
+  font-family: $font1;
+  font-weight: 700;
+  font-size: 18px;
+  color:$gray-md;
+}
+
+@mixin text-labels{
+  font-family: $font1;
+  font-weight: 700;
+  font-size: 18px;
+  color:$gray-md;
+}
+
+@mixin animation($speed){
+  -webkit-transition: all $speed ease;
+	-moz-transition: all $speed ease;
+	-o-transition: all $speed ease;
+	transition: all $speed ease;
+}
+
+// Cardview Kontakt Player/Open Format font: Source Sans Pro Bold 12pt, middle gray (808080)
+// Library Title: Source Sans Pro Bold 15pt
+// Price: Source Sans Pro Bold Italic 18pt
+//
+// Strikethrough Price: Source Sans Pro Regular 13pt, medium dark(383838)
