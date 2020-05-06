@@ -1,12 +1,45 @@
-$size-xl:1600px;
+$size-xl:1200px;
 $size-l:1100px;
 $size-m:992px;
 $size-s:768px;
 $size-xs:576px;
+
+$max-content:1400px;
+
+$tan-lt:#f7f6f3;
+$tan-dr:#d5c6bb;
+
+$red-dr:#441c26;
+$pink-dr:#c19896;
+//$pink-md = ()$pink-dr,.7)
+$pink-md:#d4b7b6;
+$peach:#f9ddcc;
+$green-dr:#102927;
 
 @mixin animation($speed){
   -webkit-transition: all $speed ease;
 	-moz-transition: all $speed ease;
 	-o-transition: all $speed ease;
 	transition: all $speed ease;
-} 
+}
+
+%font-regular{
+  font-family: granville, serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: .05em;
+}
+
+%font-italic{
+  font-family: granville, serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .05em;
+}
+
+%font-bold{
+  font-family: granville, serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: .035em;
+}

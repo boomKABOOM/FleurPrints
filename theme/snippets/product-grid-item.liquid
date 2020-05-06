@@ -61,8 +61,11 @@
           </div>
         {%- endif -%}
         {%- if fixed_aspect_ratio -%}
+          <!-- <div
+            class="grid__image-ratio grid-item--product--image grid__image-ratio--{{ settings.product_grid_image_size }} lazyload" style="background:url({{product.featured_image.src | img_url:'1024x'}}); background-size:cover;">
+          </div> -->
           <div
-            class="grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
+            class="grid__image-ratio grid-item--product--image grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
             data-bgset="{% include 'bgset', image: preview_image %}"
             data-sizes="auto">
           </div>

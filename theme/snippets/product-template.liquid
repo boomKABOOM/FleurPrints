@@ -32,6 +32,9 @@
 
   <div class="page-content page-content--product">
     <div class="page-width">
+      {%- if settings.show_breadcrumbs and isModal != true -%}
+        {%- include 'breadcrumbs' -%}
+      {%- endif -%}
 
       <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}">
         {%- if image_position == 'left' -%}
@@ -50,9 +53,6 @@
         <div class="grid__item {{ product_description_width }}">
 
           <div class="product-single__meta">
-            {%- if settings.show_breadcrumbs and isModal != true -%}
-              {%- include 'breadcrumbs' -%}
-            {%- endif -%}
 
             {%- if settings.vendor_enable -%}
               <div class="product-single__vendor">
@@ -249,6 +249,45 @@
 
               {% include 'product-additional-content', section_id: section_id %}
             {%- endunless -%}
+
+            <hr>
+            <div class="product-info">
+              <div class="product-info--links">
+                <h4>Click to learn more about:</h4>
+                <ul>
+                  <li><a href="/pages/product-information">Our Digital Downloads</a></li>
+                  <li><a href="/pages/product-information">Our Paper Prints</a></li>
+                  <li><a href="/pages/product-information">Our Oversized Prints</a></li>
+                </ul>
+              </div>
+
+              <hr>
+
+              {% comment %}
+              {% if collection.next_product or collection.previous_product %}
+
+              <div class="article-info--nav">
+                <h3>Keep Browsing</h3>
+                <div class="row--a-t">
+                  <div class="col--a-r--p-r" style="border-right:2px solid #000;">
+                    {% if collection.previous_product %}
+                      Previous
+                      <a class="nav--prev" href="{{collection.previous_product.url}}"><span>{{collection.previous_product.title}}</span></a>
+                    {% endif %}
+                  </div>
+                  <div class="col--1--a-l--p-l">
+                    {% if collection.next_product %}
+                      Next
+                      <a class="nav--next" href="{{collection.next_product.url}}"><span>{{collection.next_product.title}}</span></a>
+
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endcomment %}
+
+            </div>
 
             {%- if social -%}
               {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}

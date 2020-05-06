@@ -1,0 +1,94 @@
+{% comment %}
+
+define each active blog
+concat to all_blog_articles
+reverse lists most recently published first
+
+
+{% assign news_articles = blogs['news'].articles %}
+{% assign posts_articles = blogs['posts'].articles %}
+{% assign all_articles = blog_articles | concat:news_articles | concat:events_articles | sort: "published_at" | reverse %}
+
+{% assign blog_articles = blog.articles %}
+
+{% endcomment %}
+
+<h3 style="text-align: center;">Featured Articles</h3>
+
+{% paginate blog.articles by 1000 %}
+  {% assign blog_articles = blog.articles %}
+{% endpaginate %}
+
+
+
+{% assign result_limit = 3 %}
+{% assign result_count = 0 %}
+{% assign result_handles = '' %}
+
+
+{% for article in blog_articles reversed %}
+  {% if result_count >= result_limit %}
+    {% break %}
+  {% endif %}
+  {% if article.tags contains "Featured" %}
+    {% assign result_handles = result_handles | append:article.handle | append:"::" %}
+    {% assign result_count = result_count | plus:1 %}
+  {% endif %}
+{% endfor %}
+
+{% assign result_handles = result_handles | split:'::' %}
+{% for result in result_handles %}
+  <div class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }} data-aos="row-of-3">
+    <a href="{{articles[result].url}}" class="article__grid-image">
+
+      <div class="image-wrap">
+        <div class="grid__image-ratio grid__image-ratio--cover grid__image-ratio--wide lazyloaded" style="background-image: url({{articles[result].image.src | img_url: '500x'}});"></div>
+        <noscript>
+        <img class="lazyloaded" src="{{articles[result].image.src | img_url: '500x'}}" alt="{{articles[result].title}}">
+        </noscript>
+      </div>
+    </a>
+    <h3>{{articles[result].title}}</h3>
+    <div class="rte-setting text-spacing">{{articles[result].excerpt}}</div>
+    <a href="{{articles[result].url}}" class="btn btn--secondary btn--small">
+      Read More
+    </a>
+  </div>
+{% endfor %}
+
+<!-- {% assign block = section.blocks | last %}
+<div class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }} data-aos="row-of-3">
+    <a href="{{ block.settings.button_link }}" class="article__grid-image">
+        {% if fixed_aspect_ratio %}
+          <div class="image-wrap">
+            <div
+              class="grid__image-ratio grid__image-ratio--cover grid__image-ratio--{{ section.settings.image_size }} lazyload"
+              data-bgset="{% include 'bgset', image: block.settings.image %}"
+              data-sizes="auto">
+            </div>
+            <noscript>
+              <img class="lazyloaded" src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.title | escape }}">
+            </noscript>
+          </div>
+        {% else %}
+          <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.image.aspect_ratio }}%;">
+            {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080]"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ block.settings.image.alt | escape }}">
+            <noscript>
+              <img class="lazyloaded" src="{{ block.settings.image | img_url: '400x' }}" alt="{{ block.settings.title | escape }}">
+            </noscript>
+          </div>
+        {% endif %}
+
+    </a>
+    <h3>{{ block.settings.title }}</h3>
+    <div class="rte-setting text-spacing">{{ block.settings.text }}</div>
+    <a href="{{ block.settings.button_link }}" class="btn btn--secondary btn--small">
+      {{ block.settings.button_label }}
+    </a>
+</div> -->

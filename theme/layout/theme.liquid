@@ -21,8 +21,11 @@
 
   {% include 'social-meta-tags' %}
 
+  <link rel="stylesheet" href="https://use.typekit.net/vcq8rrl.css">
+
   {% include 'font-face' %}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'bmkbm.css' | asset_url | stylesheet_tag }}
 
   {% style %}
     .collection-item__title {
@@ -77,6 +80,7 @@
   {% endif %}
 
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'bmkbm.js' | asset_url }}" defer="defer"></script>
 
   {%- if request.page_type contains 'customers/' -%}
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>

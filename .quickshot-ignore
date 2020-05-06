@@ -1,3 +1,10 @@
+.gitignore
 
-# This your '.quickshotignore' file. Anything you put in here will be ignored by quickshot.
-# This file uses the same format as a '.gitignore' file.
+.DS_Store
+theme/assets/.DS_Store
+resources/adobe
+resources/icons
+
+theme/config/settings_data.json
+
+README.md

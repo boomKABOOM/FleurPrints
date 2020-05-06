@@ -8,6 +8,10 @@
   {%- assign show_section = false -%}
 {% endif %}
 
+{% if template == 'blog' %}
+  {%- assign show_section = false -%}
+{% endif %}
+
 {% if show_section %}
   {% if section.blocks.size > 0 %}
     {%- assign grid_item_width = 'medium-up--one-half' -%}
@@ -19,6 +23,11 @@
       <div class="section--divider">
         <div class="page-width footer-promotions">
           <div class="grid grid--flush-bottom">
+
+            {% if template == 'article' %}
+              {% include 'footer-promotions-articles' %}
+            {% else %}
+            <!-- start footer promo -->
             {% for block in section.blocks %}
               <div class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }} data-aos="row-of-3">
                 {% if block.settings.enable_image %}
@@ -76,6 +85,9 @@
                 {% endif %}
               </div>
             {% endfor %}
+            <!-- end footer promo -->
+            {% endif %}
+
           </div>
         </div>
       </div>

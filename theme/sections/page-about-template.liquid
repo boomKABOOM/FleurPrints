@@ -1,0 +1,92 @@
+<div class="page-width content--about">
+  <!--
+  <header class="section-header">
+    <h1 class="section-header__title">{{ page.title }}</h1>
+  </header>
+
+  {{ page.content }}
+   -->
+  <div class="card--intro-section">
+    <div class="row--a-t bp--s--w">
+      <div class="col--50 bp--s">
+        <div class="text">
+          <h2>Art can be more than just a stylish accent for your walls...</h2>
+          <p>It’s a gentle nudge in the direction of your dreams. A reminder to be brave. A note that you are safe and loved.</p>
+
+          <p>Each time you glance at your art, you’ll remember that your home is at the root of it all. It's where healing takes place, memories are made, conflicts arise and resolve, and it's a powerful sanctuary.</p>
+        </div>
+
+        <div class="image-box--overlap"></div>
+
+
+      </div>
+      <div class="col--50 bp--s">
+        <div class="image" style="background:url(https://cdn.shopify.com/s/files/1/0333/1188/3403/files/IMG_4999-1024x683.jpg?v=1586979346) center center no-repeat; background-size:cover;"></div>
+
+        <h3 class="nudge--right">Trauma comes in all shapes and sizes. Often striking when we least expect it, and knocking us off our feet.</h3>
+      </div>
+    </div>
+
+    <div class="row--a-t bp--s--w">
+      <div class="col--30 bp--s">
+        <div class="image-box" style="background:url('https://cdn.shopify.com/s/files/1/0333/1188/3403/files/20180619-0S8B6966_500x.jpg?v=1588772129'); background-size:cover;"></div>
+      </div>
+      <div class="col--70 bp--s">
+        <div class="inner-text">
+          <p>At FleurPrints, we believe that tough seasons call for a silver lining. That’s why it’s our mission to advance trauma awareness through art and home decor.</p>
+
+          <p>With the world as our canvas and beautiful moments as our champion: our prints reflect the magic of life. They remind us that happy memories are worth savoring and that together, we can climb hills and conquer mountains.</p>
+
+          <p>You can learn more about trauma resources here and we hope that you’ll join us in our movement to Hang it up, and RISE UP together.</p>
+
+          <br>
+          <hr>
+          <br>
+
+          <h3>Together We Can Hang It Up, and RISE UP.<br>
+          #FleurPrints</h3>
+
+          {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="card--featured">
+
+    <div class="row bp--m--w">
+      <div class="col--50 bp--m">
+        <div class="text">
+          <div class="content">
+
+            <h2>Meet Colette</h2>
+
+            <p>Fleur Prints founder Colette Wright is a photographer and Labor and Delivery Nurse on a mission to support victims of trauma. After being in a car accident at the hands of a drunk driver, she learned to live with PTSD and to let creativity aid in her healing. Colette, who also owns the home decor blog Fleur & Nest, believes that home can be a safe haven - a place of comfort and peace. And a reflection of the people and things that bring you happiness. She started Fleur Prints as a way to serve the PTSD community and to share her passion for travel photography and affordable, yet stylish home decor with the world.</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="col--50 bp--m overlap--left">
+        <div class="image" style="background:url(https://cdn.shopify.com/s/files/1/0333/1188/3403/files/IMG_4999-1024x683.jpg?v=1586979346) center center no-repeat; background-size:cover;"></div>
+      </div>
+    </div>
+
+    <div class="featured--foot">
+      <p>Colette lives in West Michigan with her family and sweet rescue puppy, Lulu. When she’s not busy with her latest home reno project, you can find her traveling to Europe, camera in hand.</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+  {% comment %}
+  {% for product in collections['all'].products %}
+    {% for image in product.images %}
+      <img style="max-width:300px; height: auto; margin:1rem; display:inline-block;" src="{{ image.src | product_img_url: 'master' }}" />
+    {% endfor %}
+  {% endfor %}
+  {% endcomment %}
