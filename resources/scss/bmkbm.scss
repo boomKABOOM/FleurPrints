@@ -4,6 +4,20 @@
   // max-width: 1200px;
 }
 
+.site-header__logo{
+  a{
+    display: block;
+    svg{
+      width: 100%;
+      height: auto;
+      @media(min-width: $size-m){
+        position: relative;
+        top:-6px;
+      }
+    }
+  }
+}
+
 // GRID STYLES
 [class^='row']{
   display: flex;
@@ -177,8 +191,46 @@ h4, .h4, h5, .h5{
   }
 }
 
+@media(max-width: $size-s){
+  .footer-promotions{
+    margin-bottom: 6rem;
+  }
+  .site-header__logo a svg {
+    width: 120%;
+    margin-top: -5px;
+  }
+
+  .small--one-half {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
 [id*='page-about-template']{
 
+}
+
+.page-content{
+  margin: 1.5rem auto;
+}
+
+.section-header__title{
+  margin: 1.5rem 0;
+}
+
+.index-section--faq{
+  margin: 3rem 0 0 0;
+}
+
+.article__body{
+  &.rte{
+    img{
+      margin: 1.5em 0;
+    }
+    gallery{
+      margin-top:-.5em;
+    }
+  }
 }
 
 .article__title{
@@ -206,9 +258,41 @@ h4, .h4, h5, .h5{
   @extend %font-regular;
 }
 
+.tag.tag--remove a, .js-drawer-open-collection-filters.btn.btn--tertiary.btn--tertiary-active{
+  background: $pink-dr;
+  border: 0;
+  &:hover{
+    background: $pink-md !important;
+  }
+}
+
 .type-banner__text{
   @extend %font-regular;
   font-size: 18px;
+  text-align:left;
+  p{
+    position: relative;
+    z-index: 2;
+  }
+  &:before{
+    content: none;
+    position: absolute;
+    z-index: 1;
+    top:-50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    @media(max-width: $size-s){
+      width: 400px;
+      height: 400px;
+    }
+    @extend %svg_lotus;
+  }
+  @media(max-width: $size-s){
+    &:before{
+      content: "";
+    }
+  }
 }
 
 footer li a, .site-footer .footer__collapsible{
@@ -246,18 +330,82 @@ footer input{
   margin-top: 1rem;
   .image-wrap{
     // padding-bottom: 100%;
-    img{
-      width: auto;
-      max-height: 800px;
-    }
+    // img{
+    //   width: auto;
+    //   max-height: 800px;
+    // }
   }
   .product__main-photos{
     max-height: 800px;
   }
 }
 
+.js-mobile-only{
+  display: none;
+}
+
+.js-flex-s{
+  display: flex;
+}
+
+@media(max-width: $size-s){
+  .js-flex-s{
+    display: block;
+  }
+  .js-desktop-only{
+    display: none;
+  }
+  .js-mobile-only{
+    display: block;
+  }
+}
+
 //homepage specific
 .template-index{
+
+  .shopify-section.index-section--flush{
+    margin-top: 75px;
+  }
+
+  .hero__image-wrapper:before, .hero__media:before {
+    opacity: .25;
+  }
+
+  .hero__image{
+    animation: fade-in 1s cubic-bezier(0.26, 0.54, 0.32, 1) 0.5s forwards !important;
+  }
+
+  .h1.hero__title{
+    .animation-cropper{
+      overflow: visible;
+    }
+    .animation-contents{
+      animation: fade-in 1s cubic-bezier(0.26, 0.54, 0.32, 1) 0.5s forwards !important;
+      svg{
+        width: 950px;
+        max-width: 75vw;
+        margin-left: -6vw;
+        @media(max-width: $size-s){
+          width: 950px;
+          max-width: 105vw;
+          margin-left: -18vw;
+        }
+      }
+
+      // position: relative;
+      // &:before{
+      //   content:"";
+      //   position: absolute;
+      //   left: -70%;
+      //   top:-70%;
+      //   width: 150%;
+      //   height: 150%;
+      //   @extend %svg_lotus;
+      // }
+
+    }
+  }
+
   .background-media-text__container{
     @media(max-width: $size-s){
       height: 375px;
@@ -283,10 +431,46 @@ footer input{
           width: 75%;
         }
         @media(max-width: $size-s){
-          padding: 5rem 1.5rem;
-          background: $pink-md;
+          padding: 1.5rem 1.5rem 5rem 1.5rem;
+          // background: $pink-md;
           width: 100%;
           text-align:left;
+        }
+      }
+    }
+  }
+
+  @media(max-width: $size-s){
+    .page-width{
+      overflow: hidden;
+    }
+    .flex-grid__item.flex-grid__item--50.type-sale_collection{
+      display: none;
+    }
+    .grid__item.small--one-half.medium-up--one-third{
+      width: 70%;
+      float:none;
+      &.js-left{
+        margin-left: -10%;
+      }
+      &.js-center{
+        margin-left: 15%;
+      }
+      &.js-right{
+        margin-left: 40%;
+        margin-right: -10%;
+      }
+    }
+    .shopify-section.index-section--flush{
+      margin-top: 0;
+      .background-media-text{
+        display: flex;
+        flex-wrap: wrap;
+        .background-media-text__container{
+          order:2;
+        }
+        .background-media-text__inner{
+          order:1
         }
       }
     }
@@ -331,6 +515,33 @@ footer input{
   .collection-item.collection-item--overlaid-box{
     position: relative;
     overflow: visible;
+    @media(max-width: $size-s){
+      height: 110px;
+    }
+    .image-wrap{
+      position: relative;
+      top:1em;
+      left: 1em;
+      overflow: hidden;
+      @media(max-width: $size-s){
+        // position: absolute;
+        height: 100%;
+
+      }
+      &:before{
+        content: "";
+        position: absolute;
+        top:-50%;
+        left: -20%;
+        width: 600px;
+        height: 600px;
+        @media(max-width: $size-s){
+          width: 400px;
+          height: 400px;
+        }
+        @extend %svg_lotus;
+      }
+    }
     &:before{
       content:"";
       position: absolute;
@@ -388,10 +599,12 @@ footer input{
       font-size: 1.2em;
       text-transform: capitalize;
       @extend %font-italic;
+      margin-bottom: -.65em;
     }
     .rte--block.rte--strong{
       @extend %font-bold;
       background: none;
+      padding-top: 0;
     }
   }
   .type-sale-images{
@@ -400,6 +613,16 @@ footer input{
     width: calc(55% + 1rem);
     height: calc(100% + 1rem);
     background: $pink-md;
+    overflow: hidden;
+    &:before{
+      content: "";
+      position: absolute;
+      width: 600px;
+      top:-50%;
+      right: -20%;
+      height: 600px;
+      @extend %svg_lotus;
+    }
     @media(max-width: $size-s){
       width:50%;
     }
@@ -415,8 +638,29 @@ footer input{
 [class*='grid-item--']{
   &[class*='--product']{
     &[class*='--image']{
+      height: 0;
+      padding-bottom: 150%;
+      margin: 0;
+      &.is-landscape{
+        padding-bottom: 75%;
+        margin:37.5% 0 0 0;
+      }
       background-size: cover;
       background-position: center center;
+    }
+  }
+}
+
+.template-index{
+  [class*='grid-item--']{
+    &[class*='--product']{
+      &[class*='--image']{
+        padding-bottom: 150%;
+        &.is-landscape{
+          padding-bottom: 150%;
+          margin: 0;
+        }
+      }
     }
   }
 }
@@ -442,6 +686,7 @@ footer input{
   max-width: 500px;
   margin: auto;
   &[class*='--links']{
+    text-align: left;
     a:hover{
       text-decoration: underline;
     }
@@ -495,12 +740,47 @@ footer input{
   }
 }
 
+.template-list-collections a.collection-item span{
+  @extend %font-italic;
+  font-size: 21.6px;
+  text-transform: capitalize;
+}
+
 .site-footer{
-  background: $tan-lt;
+  background: $pink-md;
+  padding-top: 90px;
   padding-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  .page-width{
+    position: relative;
+    z-index: 2;
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top:0;
+    right: -100px;
+    width:600px;
+    height: 600px;
+    @extend %svg_lotus;
+    @media(max-width: $size-s){
+      width: 400px;
+      height: 400px;
+    }
+  }
+  hr{
+    border-color: transparent;
+    margin: 90px 0 0 0;
+  }
+  .footer__small-text{
+    text-align: left;
+  }
   .footer__newsletter{
     input{
-      background: $tan-lt;
+      background: transparent;
+      border-color: $pink-dr;
       &::placeholder{
         // padding-left: 10px;
       }
@@ -549,6 +829,9 @@ footer input{
         margin: 5rem 0;
         width: 115%;
         padding-bottom: 65%;
+        border:3rem solid $pink-md;
+        position: relative;
+        z-index: 5;
         @media(max-width: $size-s){
           width:100%;
         }
@@ -589,7 +872,11 @@ footer input{
 
   .featured--foot{
     margin: 3rem auto;
-    max-width: 1035px;
+    padding: 0 7.5rem;
+    max-width: 1065px;
+    @media(max-width: $size-s){
+      padding: 0;
+    }
   }
 
   &[class*='--featured']{
@@ -606,7 +893,7 @@ footer input{
       display: flex;
       align-items: center;
       justify-content: center;
-      background: $tan-lt;
+      background: $pink-md;
       .content{
         padding: 5rem 7.5rem;
         @media(max-width: $size-xl){

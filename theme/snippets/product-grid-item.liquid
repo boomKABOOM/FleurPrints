@@ -14,6 +14,7 @@
 
 {%- assign product_tags = product.tags | join: ',' -%}
 {%- assign has_custom_label = false -%}
+
 {%- if product_tags contains '_label_' -%}
   {%- for tag in product.tags -%}
     {%- if tag contains '_label_' -%}
@@ -25,6 +26,11 @@
     {%- endif -%}
   {%- endfor -%}
 {%- endif -%}
+
+{% assign landscape_class = "" %}
+{% if product_tags contains 'Landscape' %}
+  {% assign landscape_class = "is-landscape" %}
+{% endif %}
 
 <div class="grid__item grid-product {{ grid_item_width }}{% if settings.quick_shop_enable and sold_out == false %} grid-product__has-quick-shop{% endif %}" data-aos="row-of-{{ per_row }}">
   <div class="grid-product__content">
@@ -65,7 +71,7 @@
             class="grid__image-ratio grid-item--product--image grid__image-ratio--{{ settings.product_grid_image_size }} lazyload" style="background:url({{product.featured_image.src | img_url:'1024x'}}); background-size:cover;">
           </div> -->
           <div
-            class="grid__image-ratio grid-item--product--image grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
+            class="grid__image-ratio {{landscape_class}} grid-item--product--image grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
             data-bgset="{% include 'bgset', image: preview_image %}"
             data-sizes="auto">
           </div>
